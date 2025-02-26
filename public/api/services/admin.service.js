@@ -57,6 +57,7 @@ class AdminService {
             const admins = yield config_1.prisma.admin.findMany({
                 select: {
                     id: true,
+                    name: true,
                     email: true,
                     role: true,
                 }
