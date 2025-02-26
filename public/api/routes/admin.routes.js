@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const controllers_1 = require("../controllers");
+const middlewares_1 = require("../middlewares");
+const admin = (0, express_1.Router)();
+admin.post("/login", controllers_1.AdminController.login);
+admin.use(middlewares_1.isAdmin);
+admin.post("/create", controllers_1.AdminController.create);
+admin.post("/logout", controllers_1.AdminController.logout);
+admin.get("/all", controllers_1.AdminController.AllAdmin);
+admin.get("/logout", controllers_1.AdminController.logout);
+exports.default = admin;

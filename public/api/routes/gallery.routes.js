@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const middlewares_1 = require("../middlewares");
+const controllers_1 = require("../controllers");
+const gallery = (0, express_1.Router)();
+gallery.use(middlewares_1.isAdmin);
+gallery.post("/create", controllers_1.GalleryController.create);
+gallery.get("/all", controllers_1.GalleryController.getAll);
+gallery.delete("/delete/:id", controllers_1.GalleryController.deleteById);
+exports.default = gallery;
