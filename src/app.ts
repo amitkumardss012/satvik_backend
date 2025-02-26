@@ -6,6 +6,7 @@ import cors from "cors"
 // Importing Routes
 import { AdminRoutes, AppointmentRoutes, GalleryRoutes } from "./api/routes";
 import { errorMiddleware } from "./api/middlewares";
+import { ENV } from "./config";
 
 
 // All the Instances
@@ -16,7 +17,7 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: [ENV.FRONTEND_URL as string, ENV.FRONTEND_URL1!],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }))

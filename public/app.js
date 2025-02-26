@@ -10,6 +10,7 @@ const cors_1 = __importDefault(require("cors"));
 // Importing Routes
 const routes_1 = require("./api/routes");
 const middlewares_1 = require("./api/middlewares");
+const config_1 = require("./config");
 // All the Instances
 const app = (0, express_1.default)();
 // Middlewares
@@ -17,7 +18,7 @@ app.use(express_1.default.json());
 app.use((0, helmet_1.default)());
 app.use((0, morgan_1.default)("dev"));
 app.use((0, cors_1.default)({
-    origin: "http://localhost:5173",
+    origin: [config_1.ENV.FRONTEND_URL, config_1.ENV.FRONTEND_URL1],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
